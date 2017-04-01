@@ -1,0 +1,36 @@
+Source: 64studio-archive-keyring
+Section: utils
+Priority: important
+Maintainer: Chris Obbard <chris@64studio.com>
+Build-Depends: debhelper (>= 9), po-debconf, gnupg
+Standards-Version: 3.9.6
+Homepage: https://github.com/64studio/64studio-archive-keyring
+Vcs-Browser: https://github.com/64studio/64studio-archive-keyring
+Vcs-Git: https://github.com/64studio/64studio-archive-keyring.git
+
+Package: 64studio-archive-keyring
+Architecture: all
+Multi-Arch: foreign
+Priority: extra
+Depends: ${misc:Depends}, apt, gnupg
+Description: GnuPG archive keys for the 64studio repository
+ 64studio digitally signs its Release files. This package
+ contains the archive key used for 64studio repositories 
+ since 2017.
+ .
+ The key is also available via the 64studio website and as
+ a udeb for debian-installer support.
+
+Package: 64studio-archive-keyring-udeb
+Architecture: all
+Multi-Arch: foreign
+Section: debian-installer
+Depends: ${misc:Depends}
+XB-Installer-Menu-Item: 6490
+XC-Package-Type: udeb
+Recommends: gpgv-udeb
+Description: GnuPG keys of the 64studio archive - udeb
+ 64studio project digitally signs its Release files. This package
+ contains the archive keys used for that, in a minimal form for use
+ in the installer.
+

@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+KEYRING=64studio-archive-keyring.gpg
+KEY=64studio-archive-keyring.gpg.asc
+
+%:
+	dh $@
+
+$(KEYRING): $(KEY)
+	gpg --no-permission-warning --homedir $(CURDIR) --no-default-keyring --keyring $(CURDIR)/$@.tmp --import $<
+	gpg --no-permission-warning --homedir $(CURDIR) --no-default-keyring --keyring $(CURDIR)/$@.tmp --export --output $(CURDIR)/$@
+
+override_dh_auto_build: $(KEYRING)
+
+override_dh_auto_clean:
+	rm -rf *.gpg *.gpg~ *.gpg.tmp

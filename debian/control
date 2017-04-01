@@ -11,7 +11,7 @@ Vcs-Git: https://github.com/64studio/64studio-archive-keyring.git
 Package: 64studio-archive-keyring
 Architecture: all
 Multi-Arch: foreign
-Priority: extra
+Priority: important
 Depends: ${misc:Depends}, apt, gnupg
 Description: GnuPG archive keys for the 64studio repository
  64studio digitally signs its Release files. This package

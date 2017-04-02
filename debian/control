@@ -12,7 +12,7 @@ Package: 64studio-archive-keyring
 Architecture: all
 Multi-Arch: foreign
 Priority: important
-Depends: apt, gpgv | gpgv2 | gpgv1, ${misc:Depends}
+Depends: apt, ${misc:Depends}
 Description: GnuPG archive keys for the 64studio repository
  64studio digitally signs its Release files. This package
  contains the archive key used for 64studio repositories 
@@ -25,12 +25,12 @@ Package: 64studio-archive-keyring-udeb
 Architecture: all
 Multi-Arch: foreign
 Section: debian-installer
-Depends: gpgv | gpgv2 | gpgv1, ${misc:Depends}
+Depends: gpgv-udeb, ${misc:Depends}
 XB-Installer-Menu-Item: 6490
 XC-Package-Type: udeb
 Recommends: gpgv-udeb
 Description: GnuPG keys of the 64studio archive - udeb
- 64studio project digitally signs its Release files. This package
+ 64studio digitally signs its Release files. This package
  contains the archive keys used for that, in a minimal form for use
  in the installer.
 

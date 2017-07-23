@@ -6,11 +6,12 @@ KEY=64studio-archive-keyring.gpg.asc
 %:
 	dh $@
 
-$(KEYRING): $(KEY)
-	gpg --no-permission-warning --homedir $(CURDIR) --no-default-keyring --keyring $(CURDIR)/$@.tmp --import $<
-	gpg --no-permission-warning --homedir $(CURDIR) --no-default-keyring --keyring $(CURDIR)/$@.tmp --export --output $(CURDIR)/$@
+$(KEYRING): keyrings/$(KEY)
+	gpg --no-permission-warning --homedir $(CURDIR)/keyrings --no-default-keyring --keyring $(CURDIR)/keyrings/$@.tmp --import $<
+	gpg --no-permission-warning --homedir $(CURDIR)/keyrings --no-default-keyring --keyring $(CURDIR)/keyrings/$@.tmp --export --output $(CURDIR)/keyrings/$@
 
 override_dh_auto_build: $(KEYRING)
 
 override_dh_auto_clean:
 	rm -rf *.gpg *.gpg~ *.gpg.tmp
+	rm -rf keyrings/*.gpg keyrings/*.gpg~ keyrings/*.gpg.tmp
